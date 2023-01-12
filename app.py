@@ -66,8 +66,11 @@ Step 4 Download the Forecast Date
 The below link allows you to download the newly created forecast
 """
 
-# if df is not None:
-#     csv_exp=fcst_filtered.to_csv(index=False)
-#     b64=base64.b64decode(csv_exp.encode()).decode()
-#     href=f'<a href="data:file/csv;base64,{b64}">Download CSV File</a>(right-click and save as ** &lt;forecast_name&gt;.csv**)'
-#     st.markdown(href,unsafe_allow_html=True)
+if df is not None:
+        csv_exp=fcst_filtered.to_csv(index=False)
+        # Encode the csv_exp variable to base64
+        csv_exp_base64 = base64.b64encode(csv_exp.encode())
+        # Decode the base64 bytes to a string
+        csv_exp_base64 = csv_exp_base64.decode()
+        href=f'<a href="data:file/csv ;base64,{csv_exp_base64}">Download CSV File </a>(right- click and save as &lt;forecast_name&gt;.csv)'
+        st.markdown(href,unsafe_allow_html=True)
